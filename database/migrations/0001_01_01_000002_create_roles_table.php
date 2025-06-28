@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->foreignUuid('tenant_id')->constrained('tenants')->onDelete('cascade');
-            $table->string('name'); // e.g., admin, manager, employee
+            $table->foreignId('tenant_id')
+                ->nullable() // Ensure this is nullable
+                ->constrained('tenants')
+                ->onDelete('set null'); // Keep this as is
+            $table->string('name');
             $table->string('description')->nullable();
             $table->timestamps();
 

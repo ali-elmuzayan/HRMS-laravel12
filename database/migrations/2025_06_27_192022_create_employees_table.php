@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('work_shift')->nullable();    // Morning, Night, etc.
             $table->text('address')->nullable();
             $table->text('notes')->nullable();
-            $table->foreignUuid('tenant_id')->constrained()->onDelete('cascade');
-            $table->foreignUuid('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('tenant_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

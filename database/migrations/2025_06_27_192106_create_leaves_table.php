@@ -19,8 +19,8 @@ return new class extends Migration
             $table->text('reason')->nullable();
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
 
-            $table->foreignUuid('reviewed_by')->nullable()->constrained('users')->onDelete('set null');
-            $table->foreignUuid('tenant_id')->constrained('tenants')->onDelete('cascade');
+            $table->foreignId('reviewed_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('tenant_id')->constrained('tenants')->onDelete('cascade');
             $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
 
 

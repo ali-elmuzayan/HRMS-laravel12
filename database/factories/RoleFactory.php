@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Tenant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +15,12 @@ class RoleFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+     public function definition()
     {
-        return [
-            //
+         return [
+            'name' => $this->faker->unique()->randomElement(['admin', 'manager', 'employee', 'editor']),
+            'description' => $this->faker->sentence(),
+            'tenant_id' => Tenant::inRandomOrder()->first()?->id ?? Tenant::factory()->create()->id,
         ];
     }
 }

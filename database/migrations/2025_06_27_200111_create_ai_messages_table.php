@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->text('message');
             $table->enum('role', ['user', 'assistant']);
-            $table->foreignUuid('user_id')->constrained()->onDelete('cascade');
-            $table->foreignUuid('conversation_id')->constrained('ai_conversations')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('conversation_id')->constrained('ai_conversations')->onDelete('cascade');
             $table->timestamps();
         });
     }

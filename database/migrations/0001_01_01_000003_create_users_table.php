@@ -13,9 +13,9 @@ return new class extends Migration
     {
 
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->primary(); // Explicit UUID primary key
+            $table->id(); 
             $table->string('name', 100);
-            $table->string('username', 100)->unique();
+            // $table->string('username', 100)->unique();
             $table->string('email', 100)->unique();;
             $table->timestamp('email_verified_at')->nullable();
 
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->foreignId('role_id')->constrained('roles')->onDelete('cascade');
             $table->boolean('is_active')->default(true);
-            $table->foreignUuid('tenant_id')->nullable()->constrained('tenants')->onDelete('set null');
+            $table->foreignId('tenant_id')->nullable()->constrained('tenants')->onDelete('set null');
             $table->rememberToken();
             $table->timestamps();
         });

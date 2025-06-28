@@ -16,12 +16,12 @@ trait Tenantable
     }
 
 
-    protected static function bootTenantable()
-    {
-        static::addGlobalScope(new TenantScope);
+    // protected static function bootTenantable()
+    // {
+    //     static::addGlobalScope(new TenantScope);
 
-        static::creating(function (Model $model) {
-            $model->tenant_id = Auth::user()->tenant_id;
-        });
-    }
+    //     static::creating(function (Model $model) {
+    //         $model->tenant_id = Auth::user()->tenant_id;
+    //     });
+    // }
 }
