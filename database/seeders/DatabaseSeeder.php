@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
             TenantSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            EmployeeSeeder::class,
+            DepartmentSeeder::class,
         ]);
 
     }
