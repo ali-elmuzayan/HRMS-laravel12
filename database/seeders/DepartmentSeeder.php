@@ -30,8 +30,14 @@ class DepartmentSeeder extends Seeder
             );
 
 
-        Department::factory()->hr()->create();
-        Department::factory()->it()->create();
-        Department::factory()->finance()->create();
+        Department::factory()->count(100)->hr()->create([
+            'tenant_id' => Arr::random($tenants),
+        ]);
+        Department::factory()->count(100)->it()->create([
+            'tenant_id' => Arr::random($tenants),
+        ]);
+        Department::factory()->count(100)->finance()->create([
+            'tenant_id' => Arr::random($tenants),
+        ]);
     }
 }
